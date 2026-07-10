@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fresh Herbal Nutrition</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet" />
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <style>
+        /* ===== GLOBAL ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background-color: #f9f9ff;
+            color: #151c27;
+            overflow-x: hidden;
+        }
+
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ===== WARNA ===== */
+        :root {
+            --primary: #061b0e;
+            --primary-fixed: #d0e9d4;
+            --secondary: #775a19;
+            --secondary-fixed: #ffdea5;
+            --on-surface-variant: #434843;
+            --on-primary: #ffffff;
+        }
+
+        .text-primary-custom {
+            color: var(--primary) !important;
+        }
+        .bg-primary-custom {
+            background-color: var(--primary) !important;
+        }
+        .text-secondary-custom {
+            color: var(--secondary) !important;
+        }
+        .bg-secondary-custom {
+            background-color: var(--secondary) !important;
+        }
+        .bg-primary-fixed {
+            background-color: var(--primary-fixed) !important;
+        }
+        .text-on-surface-variant {
+            color: var(--on-surface-variant) !important;
+        }
+
+        /* ===== GLASS CARD ===== */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar-custom {
+            background: rgba(255, 255, 255, 0.92) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 2px solid rgba(119, 90, 25, 0.2);
+            box-shadow: 0 4px 20px rgba(6, 27, 14, 0.06);
+            transition: all 0.2s ease;
+            z-index: 999;
+        }
+        .navbar-custom.scrolled {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        .navbar-custom .navbar-brand {
+            color: var(--primary) !important;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            font-family: 'Playfair Display', serif;
+        }
+        .navbar-custom .navbar-brand i {
+            color: var(--secondary);
+            font-size: 1.7rem;
+            margin-right: 6px;
+        }
+        .navbar-custom .nav-link {
+            color: var(--primary) !important;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            transition: all 0.2s ease;
+        }
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link.active {
+            background: rgba(119, 90, 25, 0.16);
+            color: var(--primary) !important;
+        }
+        .navbar-custom .nav-link.active {
+            background: var(--secondary);
+            color: white !important;
+        }
+        .search-box {
+            background: #f7f7f7;
+            border: 1px solid rgba(6, 27, 14, 0.12);
+            border-radius: 999px;
+            padding: 0.45rem 1rem 0.45rem 2.4rem;
+            font-size: 0.9rem;
+            color: var(--primary);
+            width: 220px;
+            transition: 0.2s ease;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(119, 90, 25, 0.16);
+        }
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary);
+            opacity: 0.7;
+        }
+        .btn-cart {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            transition: 0.2s ease;
+        }
+        .btn-cart:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* ===== BUTTON ===== */
+        .btn-gold {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 9999px;
+            padding: 0.75rem 2.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        .btn-gold:hover {
+            background-color: #0a2e1a;
+            color: white;
+            transform: scale(1.02);
+        }
+
+        .btn-outline-gold {
+            border: 1px solid rgba(119, 90, 25, 0.3);
+            border-radius: 9999px;
+            padding: 0.75rem 2.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            color: var(--secondary);
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        .btn-outline-gold:hover {
+            background: rgba(119, 90, 25, 0.1);
+            color: var(--secondary);
+        }
+
+        /* ===== HERO ===== */
+        .hero-section {
+            min-height: 100vh;
+            padding-top: 100px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f9f9ff 0%, #e7eefe 100%);
+        }
+
+        /* ===== SECTION ===== */
+        .section-gap {
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+        @media (min-width: 992px) {
+            .section-gap {
+                padding-top: 120px;
+                padding-bottom: 120px;
+            }
+        }
+
+        .section-title-underline {
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== PRODUCT CARD ===== */
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        .product-card img {
+            transition: transform 0.6s ease;
+        }
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ===== TESTIMONI ===== */
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1rem;
+            transition: transform 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* ===== FORM ===== */
+        .contact-form .form-control {
+            border: none;
+            border-bottom: 2px solid #c3c8c1;
+            border-radius: 0;
+            padding: 0.5rem 0;
+            transition: border-color 0.3s ease;
+            background: transparent;
+        }
+        .contact-form .form-control:focus {
+            border-bottom-color: var(--secondary);
+            box-shadow: none;
+        }
+        .contact-form .form-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.8);
+        }
+        footer h5 {
+            color: var(--secondary-fixed);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        footer a {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
+        footer a:hover {
+            color: var(--secondary-fixed);
+            transform: translateX(4px);
+            display: inline-block;
+        }
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-fixed);
+            text-decoration: none;
+        }
+        .footer-brand i {
+            color: var(--secondary);
+        }
+        .footer-link {
+            color: rgba(255, 255, 255, 0.72);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-link:hover {
+            color: var(--secondary-fixed);
+        }
+
+        /* ===== FADE IN ===== */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.2rem !important;
+                line-height: 1.2 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================== -->
+    <!-- NAVBAR -->
+    <!-- ============================== -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-custom py-3" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+                <img src="src/logo.png" alt="Fresh Herbal Nutrition logo" class="me-2" style="height: 48px; width: auto;" />
+                <span>Fresh Herbal Nutrition</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#keunggulan">Keunggulan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product.html">Produk Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#testimoni">Testimoni</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#kontak">Kontak</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="position-relative d-none d-lg-block">
+                        <i class="bi bi-search search-icon"></i>
+                        <input type="text" class="search-box" placeholder="Cari ramuan herbal..." />
+                    </div>
+                    <button class="btn-cart" type="button" aria-label="Keranjang">
+                        <i class="bi bi-cart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================== -->
+    <!-- HERO -->
+    <!-- ============================== -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 order-2 order-lg-1">
+                    <span class="d-inline-block px-4 py-1 bg-primary-fixed text-dark rounded-pill fs-6 fw-semibold">
+                        PREMIUM HERBAL REMEDY
+                    </span>
+                    <h1 class="font-playfair fw-bold display-3 text-primary-custom mt-4 hero-title">
+                        Rahasia Kesehatan Alami dengan <span class="text-secondary-custom fst-italic">Bawang Hitam</span> Pilihan
+                    </h1>
+                    <p class="fs-5 text-on-surface-variant mt-4">
+                        Diproduksi 100% alami dan telah bersertifikasi resmi serta halal. Solusi herbal terbaik untuk menjaga kesehatan jantung, mengoptimalkan fungsi otak, dan mendukung sistem pencernaan Anda secara menyeluruh.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <a href="product.html" class="btn btn-gold">BELI SEKARANG</a>
+                        <a href="product.html" class="btn btn-outline-gold">PELAJARI MANFAAT</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2">
+                    <div class="position-relative">
+                        <div class="glass-card p-3 rounded-4 position-relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfe7_OFtnOk_Id669wIqYu_mBOAr1MMMOvUOUcHEPPvMqlmPObz_OFKSI7GFvnKjqnX5Qqjcj1tFiuOQbD-cbQE7OB4btf5fKt9N_2Rfo_pryjQO_n8UJYL4uM2uZOfy-GWqdksulheT-DtjMnY2l6PoWPDuuLzj7IQ0nWV0VLiOSCBn0XxWrxv0d9-eocZVmFXgzUGOkPQzl9cbIol82UXcVs4Wug5_759WUdZ1ZCeyaXVSdXIL3BlzZfSI1z0qT3VLg-zk-k0Ck"
+                            alt="Black Garlic"
+                            class="img-fluid rounded-3 w-100" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- KEUNGGULAN -->
+    <!-- ============================== -->
+    <section id="keunggulan" class="section-gap bg-white">
+        <div class="container">
+            <div class="text-center mb-5 fade-in-section">
+                <h2 class="font-playfair fw-bold display-5 text-primary-custom">Mengapa Fresh Herbal Nutrition?</h2>
+                <div class="section-title-underline"></div>
+            </div>
+            <div class="row g-4 fade-in-section">
+                <div class="col-md-4">
+                    <div class="glass-card p-5 rounded-4 h-100 text-center">
+                        <div class="bg-primary-fixed rounded-circle d-inline-flex p-3 mb-4">
+                            <span class="material-symbols-outlined fs-1 text-primary-custom">verified_user</span>
+                        </div>
+                        <h3 class="font-playfair fs-4 fw-bold text-primary-custom">Kualitas Super</h3>
+                        <p class="text-on-surface-variant">Kami hanya menggunakan bawang putih tunggal pilihan (Bawang Lanang) kualitas ekspor dengan diameter sempurna.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card p-5 rounded-4 h-100 text-center">
+                        <div class="bg-primary-fixed rounded-circle d-inline-flex p-3 mb-4">
+                            <span class="material-symbols-outlined fs-1 text-primary-custom">history</span>
+                        </div>
+                        <h3 class="font-playfair fs-4 fw-bold text-primary-custom">Proses Alami</h3>
+                        <p class="text-on-surface-variant">Fermentasi terkontrol selama 90 hari tanpa bantuan bahan kimia, menjaga integritas enzim dan nutrisi alami tetap utuh.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card p-5 rounded-4 h-100 text-center">
+                        <div class="bg-primary-fixed rounded-circle d-inline-flex p-3 mb-4">
+                            <span class="material-symbols-outlined fs-1 text-primary-custom">clean_hands</span>
+                        </div>
+                        <h3 class="font-playfair fs-4 fw-bold text-primary-custom">Tanpa Pengawet</h3>
+                        <p class="text-on-surface-variant">Murni 100% tanaman herbal. Tanpa pewarna, tanpa pemanis buatan, dan tanpa bahan pengawet sintetis apa pun.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- PRODUK -->
+    <!-- ============================== -->
+    <section id="produk" class="section-gap" style="background-color: #f9f9ff;">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-end mb-5 fade-in-section">
+                <div>
+                    <h2 class="font-playfair fw-bold display-5 text-primary-custom">Produk Unggulan Kami</h2>
+                    <p class="fs-5 text-on-surface-variant">Koleksi kurasi nutrisi herbal terbaik untuk mendukung gaya hidup sehat Anda setiap hari.</p>
+                </div>
+                <a href="product.html" class="text-secondary-custom fw-bold d-flex align-items-center gap-2 text-decoration-none">
+                    Lihat Semua Koleksi
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+            <div class="row g-4 fade-in-section">
+                <div class="col-md-4">
+                    <div class="glass-card rounded-4 overflow-hidden product-card h-100">
+                        <div class="position-relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLmuDRRdBPqIovvC8zazfuS3CPGd-1P5NGVUQ2Xf17Yxft9Mnd-w_tHWAGiwsq2iXbRQiVjWlgKPhX0uclTvRn7m2PvpgtT6Wv2F0MhK-nUqYnkAbxBiREgCgzTKS25yFrq1L6JvS4r5iuplWMKH9FDQWgjbUM79Ez_ADnOXHLGzNYlz1ZOijieeswDBReG36QMc_V-xEYBPCaqzhB8aDLImdbdQfQ0GThVFmRC5J_SjVwRi-lhqpTz7sXM1b9tIUC87ZmHussTjY"
+                            alt="Black Garlic"
+                            class="img-fluid w-100"
+                            style="height: 320px; object-fit: cover;" />
+                            <span class="position-absolute top-0 end-0 m-3 bg-secondary-custom text-white px-3 py-1 rounded-pill fs-6 fw-semibold">BEST SELLER</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-playfair fs-4 fw-bold text-primary-custom">Black Garlic Premium 250g</h3>
+                            <p class="text-on-surface-variant">Fermentasi 90 hari, tekstur lembut seperti kurma.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-secondary-custom fw-bold fs-4">Rp 185.000</span>
+                                <a href="#" class="btn btn-gold rounded-circle p-0 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                                    <span class="material-symbols-outlined">shopping_bag</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card rounded-4 overflow-hidden product-card h-100">
+                        <div class="position-relative">
+                            <img src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"
+                            alt="Garlic Extract"
+                            class="img-fluid w-100"
+                            style="height: 320px; object-fit: cover;" />
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-playfair fs-4 fw-bold text-primary-custom">Garlic Oil Extract</h3>
+                            <p class="text-on-surface-variant">Ekstrak terkonsentrasi untuk daya tahan tubuh maksimal.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-secondary-custom fw-bold fs-4">Rp 225.000</span>
+                                <a href="#" class="btn btn-gold rounded-circle p-0 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                                    <span class="material-symbols-outlined">shopping_bag</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card rounded-4 overflow-hidden product-card h-100">
+                        <div class="position-relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtr0jh7FNWvYcS8nNj_aYOvuUBKc1sjL7w90IbTQONpN7Gz4RRIsfrMr9AJvYpq-3G5LAmyGD0aPUb5BfaB3AfwzxqcGQHrV5W0t7Q8b2fzu9RPewjgXKugDCZwU5Z3K_fOVL8WGokeOX0RzFlVFVQrPX-Pmuw0n4tDC5PGlEG6Iq0RKDWaJ0cbhrpZ4aTaWGUeycCA6H8gFKtkrrzcJclgczQVuwGp5LL6-MzK67Y7l7ka0lyfhzg1H7-Pka4MI1jf1_iASxOs-s"
+                            alt="Wellness Box"
+                            class="img-fluid w-100"
+                            style="height: 320px; object-fit: cover;" />
+                            <span class="position-absolute top-0 end-0 m-3 bg-primary-fixed text-dark px-3 py-1 rounded-pill fs-6 fw-semibold">GIFT SET</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-playfair fs-4 fw-bold text-primary-custom">Ultimate Wellness Box</h3>
+                            <p class="text-on-surface-variant">Paket lengkap nutrisi keluarga untuk satu bulan.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-secondary-custom fw-bold fs-4">Rp 550.000</span>
+                                <a href="#" class="btn btn-gold rounded-circle p-0 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                                    <span class="material-symbols-outlined">shopping_bag</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- TESTIMONI -->
+    <!-- ============================== -->
+    <section id="testimoni" class="section-gap" style="background-color: #f0f3ff;">
+        <div class="container">
+            <div class="row g-5 align-items-center fade-in-section">
+                <div class="col-lg-5">
+                    <h2 class="font-playfair fw-bold display-5 text-primary-custom">Apa Kata Mereka?</h2>
+                    <p class="fs-5 text-on-surface-variant mt-3">Ribuan pelanggan telah merasakan transformasi kesehatan nyata setelah rutin mengonsumsi produk Fresh Herbal Nutrition.</p>
+                    <div class="position-relative mt-4 rounded-4 overflow-hidden shadow">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtjNWyX1xlSBoCeEkuq4i4ntEIeeMHP2-jKTGCL_PZUQkdb1NsCWc73rLJrFdzWa3an-iBxIxW5WNfAoaOY-gBw48qwKWk7p1NGgo7KEdmB7LIsLZCkWoIjza3VNXYhBXJYyNSgSPpSUWWBs5lpuO3Zw4hOV2lCss1Wk_QxaGn7zhd__YE9FnketGhmklpg_eDQvXzxTkrwymgoXtVuqfBRDV821eEOkEmQ2HZSL9xnXYcNfsK2jQR40jX1Ks3XvjmDlztcP-Cjww"
+                        alt="Video testimonial"
+                        class="img-fluid w-100" />
+                        <div class="position-absolute top-50 start-50 translate-middle bg-white bg-opacity-25 rounded-circle p-4 border border-white border-opacity-50">
+                            <span class="material-symbols-outlined fs-1 text-white" style="font-variation-settings:'FILL' 1;">play_arrow</span>
+                        </div>
+                        <span class="position-absolute bottom-0 start-0 m-3 text-white bg-black bg-opacity-50 px-3 py-1 rounded-pill fs-6">Watch Video Review</span>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="testimonial-card p-4 h-100">
+                                <div class="text-secondary-custom mb-2">
+                                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+                                </div>
+                                <p class="fst-italic">"Awalnya coba-coba karena punya hipertensi. Setelah rutin konsumsi Bawang Hitam dari Fresh Herbal selama 2 bulan, tekanan darah saya jadi lebih stabil dan badan terasa jauh lebih ringan."</p>
+                                <div class="border-top pt-3 mt-3 d-flex align-items-center gap-3">
+                                    <div class="bg-secondary-custom rounded-circle" style="width: 48px; height: 48px;"></div>
+                                    <div>
+                                        <strong class="text-primary-custom">Ibu Ratna S.</strong>
+                                        <p class="small text-on-surface-variant m-0">Ibu Rumah Tangga</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="testimonial-card p-4 h-100 mt-md-5">
+                                <div class="text-secondary-custom mb-2">
+                                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+                                </div>
+                                <p class="fst-italic">"Kualitasnya sangat berbeda dengan merk lain yang pernah saya beli di marketplace. Rasanya manis-asam pas, teksturnya padat tapi lembut. Sangat direkomendasikan!"</p>
+                                <div class="border-top pt-3 mt-3 d-flex align-items-center gap-3">
+                                    <div class="bg-secondary-custom rounded-circle" style="width: 48px; height: 48px;"></div>
+                                    <div>
+                                        <strong class="text-primary-custom">Bapak Gunawan</strong>
+                                        <p class="small text-on-surface-variant m-0">Wiraswasta</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- KONTAK -->
+    <!-- ============================== -->
+    <section id="kontak" class="section-gap">
+        <div class="container">
+            <div class="glass-card rounded-5 overflow-hidden shadow fade-in-section">
+                <div class="row g-0">
+                    <div class="col-lg-6 bg-primary-custom text-white p-5 p-lg-5">
+                        <h2 class="font-playfair fw-bold display-5">Hubungi Kami</h2>
+                        <p class="text-white-50">Ada pertanyaan tentang produk atau butuh konsultasi kesehatan? Tim kami siap membantu Anda.</p>
+                        <div class="mt-5 d-flex flex-column gap-4">
+                            <div class="d-flex gap-3 align-items-start">
+                                <span class="material-symbols-outlined text-secondary-fixed">location_on</span>
+                                <p class="m-0">Jl. Herbal Alami No. 123, Kebayoran Baru, Jakarta Selatan, 12150</p>
+                            </div>
+                            <div class="d-flex gap-3 align-items-center">
+                                <span class="material-symbols-outlined text-secondary-fixed">call</span>
+                                <p class="m-0">+62 812-3456-7890</p>
+                            </div>
+                            <div class="d-flex gap-3 align-items-center">
+                                <span class="material-symbols-outlined text-secondary-fixed">mail</span>
+                                <p class="m-0">care@freshherbal.id</p>
+                            </div>
+                        </div>
+                        <div class="mt-5 d-flex gap-3">
+                            <a href="#" class="btn btn-outline-light rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+                                <span class="material-symbols-outlined">public</span>
+                            </a>
+                            <a href="#" class="btn btn-outline-light rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+                                <span class="material-symbols-outlined">chat_bubble</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 bg-white p-5 p-lg-5">
+                        <form class="contact-form">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" placeholder="John Doe" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" placeholder="john@example.com" />
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Nomor WhatsApp</label>
+                                    <input type="tel" class="form-control" placeholder="+62 812..." />
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Pesan Anda</label>
+                                    <textarea class="form-control" rows="4" placeholder="Tuliskan pertanyaan Anda di sini..."></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-gold w-100">KIRIM PESAN</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- FOOTER -->
+    <!-- ============================== -->
+    <footer class="pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4 pb-4 border-bottom border-white border-opacity-10">
+                <div class="col-md-6 col-lg-4">
+                    <a class="footer-brand d-flex align-items-center gap-2" href="#">
+                        <img src="src/logo.png" alt="Fresh Herbal Nutrition logo" style="height: 52px; width: auto;" />
+                        <span>Fresh Herbal Nutrition</span>
+                    </a>
+                    <p class="text-white-50 mt-3">Berdedikasi untuk menghadirkan kearifan herbal kuno ke dalam gaya hidup modern melalui produk nutrisi alami berkualitas tinggi dan teruji secara sains.</p>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h5>Navigasi</h5>
+                    <ul class="list-unstyled mt-3 d-flex flex-column gap-2">
+                        <li><a href="#" class="footer-link">Produk</a></li>
+                        <li><a href="#" class="footer-link">Tentang Kami</a></li>
+                        <li><a href="#" class="footer-link">Artikel Kesehatan</a></li>
+                        <li><a href="#" class="footer-link">Reseller</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h5>Bantuan</h5>
+                    <ul class="list-unstyled mt-3 d-flex flex-column gap-2">
+                        <li><a href="#" class="footer-link">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="footer-link">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="#" class="footer-link">Lokasi Toko</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-4 text-center">
+                <p class="text-white-50 small m-0">© 2024 Fresh Herbal Nutrition. Ancient Wisdom, Modern Science.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================== -->
+    <!-- BOOTSTRAP JS -->
+    <!-- ============================== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <!-- ============================== -->
+    <!-- CUSTOM JS -->
+    <!-- ============================== -->
+    <script>
+        // Navbar scroll effect
+        document.addEventListener('scroll', function() {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Fade-in on scroll
+        const fadeSections = document.querySelectorAll('.fade-in-section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeSections.forEach(el => observer.observe(el));
+
+        // Smooth scroll untuk link navbar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>t

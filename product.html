@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semua Produk | Fresh Herbal Nutrition</title>
+  <!-- Bootstrap 5 + Icons + Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- PALETTE: Hijau, Emas, Putih ---------- */
+    :root {
+      --hijau-tua: #0f2b1a;
+      --hijau-muda: #4d7a5b;
+      --emas: #d4a843;
+      --emas-muda: #e9c97c;
+      --putih: #ffffff;
+      --putih-abu: #f4f7f2;
+      --abu-hijau: #e2ebe3;
+    }
+    body {
+      background-color: var(--putih-abu);
+      color: var(--hijau-tua);
+      font-family: 'Hanken Grotesk', sans-serif;
+    }
+    h1, h2, h3, h4, .playfair {
+      font-family: 'Playfair Display', serif;
+    }
+    /* ---------- NAVBAR STICKY + WARNA ---------- */
+    .navbar-custom {
+      background: rgba(255, 255, 255, 0.92) !important;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--emas-muda);
+      box-shadow: 0 4px 20px rgba(15, 43, 26, 0.06);
+      transition: all 0.2s;
+    }
+    .navbar-custom .navbar-brand {
+      color: var(--hijau-tua) !important;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .navbar-custom .navbar-brand i {
+      color: var(--emas);
+      font-size: 1.8rem;
+      margin-right: 6px;
+    }
+    .navbar-custom .nav-link {
+      color: var(--hijau-tua) !important;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      transition: 0.2s;
+    }
+    .navbar-custom .nav-link:hover,
+    .navbar-custom .nav-link.active {
+      background: var(--emas-muda);
+      color: var(--hijau-tua) !important;
+    }
+    .navbar-custom .nav-link.active {
+      background: var(--emas);
+      color: white !important;
+    }
+    .search-box {
+      background: var(--putih-abu);
+      border: 1px solid var(--abu-hijau);
+      border-radius: 50px;
+      padding: 0.4rem 1rem 0.4rem 2.5rem;
+      font-size: 0.9rem;
+      color: var(--hijau-tua);
+      width: 200px;
+      transition: 0.2s;
+    }
+    .search-box:focus {
+      outline: none;
+      border-color: var(--emas);
+      box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.25);
+    }
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--hijau-muda);
+      opacity: 0.7;
+    }
+    .btn-cart {
+      background: var(--hijau-tua);
+      color: white;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: 0.2s;
+    }
+    .btn-cart:hover {
+      background: var(--emas);
+      color: var(--hijau-tua);
+    }
+    /* ---------- GLASS CARD (Hijau/Emas) ---------- */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(212, 168, 67, 0.25);
+      border-radius: 1.25rem;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+      overflow: hidden;
+    }
+    .glass-card:hover {
+      border-color: var(--emas);
+      transform: translateY(-6px);
+      box-shadow: 0 25px 50px -10px rgba(15, 43, 26, 0.15);
+    }
+    .glass-card .card-body {
+      padding: 1.5rem;
+    }
+    /* ---------- BUTTONS & BADGES ---------- */
+    .btn-primary-hijau {
+      background: var(--hijau-tua);
+      border: none;
+      color: white;
+      border-radius: 50px;
+      padding: 0.5rem 1.5rem;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .btn-primary-hijau:hover {
+      background: var(--hijau-muda);
+      color: white;
+    }
+    .btn-outline-emas {
+      border: 1px solid var(--emas);
+      border-radius: 50px;
+      padding: 0.3rem 1.2rem;
+      background: transparent;
+      color: var(--hijau-tua);
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-outline-emas:hover {
+      background: var(--emas);
+      color: white;
+      border-color: var(--emas);
+    }
+    .badge-emas {
+      background: var(--emas);
+      color: var(--hijau-tua);
+      font-weight: 700;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 2;
+    }
+    .badge-hijau {
+      background: var(--hijau-tua);
+      color: white;
+      font-weight: 700;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 2;
+    }
+    .product-img-wrapper {
+      overflow: hidden;
+      border-radius: 0.75rem;
+      aspect-ratio: 1 / 1;
+      background: #eef3ec;
+    }
+    .product-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .product-img-wrapper:hover img {
+      transform: scale(1.06);
+    }
+    .harga-emas {
+      color: var(--emas);
+      font-weight: 700;
+    }
+    /* ---------- CTA hijau + emas ---------- */
+    .cta-bg {
+      background: var(--hijau-tua);
+      border-radius: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-bg .form-control {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      border-radius: 50px;
+      padding: 0.75rem 1.5rem;
+    }
+    .cta-bg .form-control::placeholder {
+      color: rgba(255,255,255,0.6);
+    }
+    .cta-bg .form-control:focus {
+      box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.4);
+      background: rgba(255,255,255,0.15);
+      border-color: var(--emas);
+    }
+    .btn-cta-emas {
+      background: var(--emas);
+      border: none;
+      border-radius: 50px;
+      padding: 0.75rem 2rem;
+      font-weight: 700;
+      color: var(--hijau-tua);
+      transition: 0.2s;
+    }
+    .btn-cta-emas:hover {
+      background: var(--emas-muda);
+      color: var(--hijau-tua);
+    }
+    /* ---------- FOOTER hijau/emas ---------- */
+    footer {
+      background: var(--hijau-tua);
+      color: rgba(255,255,255,0.8);
+    }
+    footer h5 {
+      color: var(--emas-muda);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+    footer a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    footer a:hover {
+      color: var(--emas-muda);
+      transform: translateX(4px);
+      display: inline-block;
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--emas-muda);
+    }
+    .footer-brand i {
+      color: var(--emas);
+    }
+    /* ---------- ambient glow hijau ---------- */
+    .ambient-glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(77, 122, 91, 0.08) 0%, rgba(244, 247, 242, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    /* ---------- scrollbar ---------- */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--putih-abu); }
+    ::-webkit-scrollbar-thumb { background: var(--hijau-muda); border-radius: 10px; }
+  </style>
+</head>
+<body>
+
+<!-- ========== NAVBAR (sticky top) ========== -->
+<nav class="navbar navbar-expand-lg sticky-top navbar-custom py-3">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="src/logo.png" alt="Fresh Herbal Nutrition logo" class="me-2" style="height: 48px; width: auto;" />
+      <span>Fresh Herbal Nutrition</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#keunggulan">Benefits</a></li>
+        <li class="nav-item"><a class="nav-link active" href="product.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#testimoni">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#kontak">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-3">
+        <div class="position-relative d-none d-lg-block">
+          <i class="bi bi-search search-icon"></i>
+          <input type="text" class="search-box" placeholder="Cari ramuan herbal...">
+        </div>
+        <button class="btn-cart"><i class="bi bi-cart"></i></button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== MAIN ========== -->
+<main class="position-relative" style="padding-top: 1.5rem;">
+  <!-- ambient -->
+  <div class="ambient-glow top-0 start-0 translate-middle"></div>
+  <div class="ambient-glow bottom-0 end-0 translate-middle"></div>
+
+  <div class="container py-4">
+    <!-- header -->
+    <header class="row align-items-end g-4 mb-5">
+      <div class="col-md-7">
+        <span class="text-uppercase fw-bold" style="color:var(--emas); letter-spacing:0.2em; font-size:0.75rem;">Koleksi Terlengkap</span>
+        <h1 class="display-4 fw-bold playfair" style="color:var(--hijau-tua);">Semua Produk</h1>
+        <p class="fs-5" style="color:var(--hijau-muda);">
+          Temukan keharmonisan antara tradisi herbal kuno dan standar sains modern. Setiap produk kami dikurasi untuk mendukung perjalanan kesehatan holistik Anda.
+        </p>
+      </div>
+      <div class="col-md-5 d-flex justify-content-md-end gap-3">
+        <span class="btn-outline-emas"><i class="bi bi-funnel"></i> Filter</span>
+        <span class="btn-outline-emas"><i class="bi bi-arrow-up-down"></i> Urutkan</span>
+      </div>
+      <div class="col-12"><hr style="border-color:var(--emas-muda); opacity:0.3;"></div>
+    </header>
+
+    <!-- product grid -->
+    <section class="row g-4">
+      <div class="col-sm-6 col-lg-4 col-xl-3">
+        <div class="glass-card h-100">
+          <div class="card-body d-flex flex-column h-100">
+            <div class="product-img-wrapper position-relative mb-3">
+              <img src="src/products/black%20garlic%20250gram.png" alt="Black Garlic 250gram" class="img-fluid">
+              <span class="badge-emas">TERLARIS</span>
+            </div>
+            <h3 class="h5 playfair fw-bold" style="color:var(--hijau-tua);">Black Garlic 250g</h3>
+            <p class="text-secondary" style="font-size:0.95rem; flex:1; color:var(--hijau-muda)!important;">Produk utama dengan rasa khas dan kandungan antioksidan tinggi.</p>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="fs-5 harga-emas">Rp 125.000</span>
+              <button class="btn btn-primary-hijau rounded-circle d-flex align-items-center justify-content-center" style="width:40px;height:40px; padding:0;"><i class="bi bi-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-4 col-xl-3">
+        <div class="glass-card h-100">
+          <div class="card-body d-flex flex-column h-100">
+            <div class="product-img-wrapper mb-3">
+              <img src="src/products/black%20garlic%20500gram.png" alt="Black Garlic 500gram" class="img-fluid">
+            </div>
+            <h3 class="h5 playfair fw-bold" style="color:var(--hijau-tua);">Black Garlic 500g</h3>
+            <p class="text-secondary" style="font-size:0.95rem; flex:1; color:var(--hijau-muda)!important;">Paket besar untuk kebutuhan rutin harian dan keluarga.</p>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="fs-5 harga-emas">Rp 220.000</span>
+              <button class="btn btn-primary-hijau rounded-circle d-flex align-items-center justify-content-center" style="width:40px;height:40px; padding:0;"><i class="bi bi-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-4 col-xl-3 d-xl-none"></div>
+      <div class="col-12 col-lg-8 col-xl-6">
+        <div class="glass-card h-100">
+          <div class="card-body h-100 d-flex flex-column flex-md-row gap-4">
+            <div class="col-md-6 product-img-wrapper" style="aspect-ratio:1/1; flex-shrink:0;">
+              <img src="src/products/black%20garlic%20standing%20100gram.png" alt="Black Garlic Standing 100gram" class="img-fluid">
+            </div>
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+              <span class="text-uppercase fw-bold" style="color:var(--emas); font-size:0.7rem; letter-spacing:0.15em;">EDISI SPESIAL</span>
+              <h3 class="h2 playfair fw-bold" style="color:var(--hijau-tua);">Black Garlic Standing 100g</h3>
+              <p style="color:var(--hijau-muda); font-size:0.95rem;">Format praktis dan elegan untuk konsumsi sehari-hari.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
+                <span class="fs-5 harga-emas">Rp 95.000</span>
+                <button class="btn btn-primary-hijau px-4">BELI SEKARANG</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-4 col-xl-3">
+        <div class="glass-card h-100">
+          <div class="card-body d-flex flex-column h-100">
+            <div class="product-img-wrapper mb-3">
+              <img src="src/products/black%20garlic%20botol%20100gram.png" alt="Black Garlic Botol 100gram" class="img-fluid">
+            </div>
+            <h3 class="h5 playfair fw-bold" style="color:var(--hijau-tua);">Black Garlic Botol 100g</h3>
+            <p class="text-secondary" style="font-size:0.95rem; flex:1; color:var(--hijau-muda)!important;">Versi botol praktis untuk dibawa dan dikonsumsi kapan saja.</p>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="fs-5 harga-emas">Rp 110.000</span>
+              <button class="btn btn-primary-hijau rounded-circle d-flex align-items-center justify-content-center" style="width:40px;height:40px; padding:0;"><i class="bi bi-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-4 col-xl-3">
+        <div class="glass-card h-100">
+          <div class="card-body d-flex flex-column h-100">
+            <div class="product-img-wrapper mb-3">
+              <img src="src/products/madu%20bawang%20hitam%20botol%20100gram.png" alt="Madu Bawang Hitam Botol 100gram" class="img-fluid">
+            </div>
+            <h3 class="h5 playfair fw-bold" style="color:var(--hijau-tua);">Madu Bawang Hitam 100g</h3>
+            <p class="text-secondary" style="font-size:0.95rem; flex:1; color:var(--hijau-muda)!important;">Campuran madu premium dan bawang hitam untuk stamina harian.</p>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="fs-5 harga-emas">Rp 95.000</span>
+              <button class="btn btn-primary-hijau rounded-circle d-flex align-items-center justify-content-center" style="width:40px;height:40px; padding:0;"><i class="bi bi-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-4 col-xl-3">
+        <div class="glass-card h-100">
+          <div class="card-body d-flex flex-column h-100">
+            <div class="product-img-wrapper mb-3">
+              <img src="src/products/madu%20bawang%20tunggal%20botol%20130gram.png" alt="Madu Bawang Tunggal Botol 130gram" class="img-fluid">
+            </div>
+            <h3 class="h5 playfair fw-bold" style="color:var(--hijau-tua);">Madu Bawang Tunggal 130g</h3>
+            <p class="text-secondary" style="font-size:0.95rem; flex:1; color:var(--hijau-muda)!important;">Produk herbal alami dengan rasa lembut dan manfaat optimal.</p>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="fs-5 harga-emas">Rp 115.000</span>
+              <button class="btn btn-primary-hijau rounded-circle d-flex align-items-center justify-content-center" style="width:40px;height:40px; padding:0;"><i class="bi bi-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-4 col-xl-3">
+        <div class="glass-card h-100">
+          <div class="card-body d-flex flex-column h-100">
+            <div class="product-img-wrapper mb-3">
+              <img src="src/products/acar%20bawang%20tunggal%20botol%20100gram.png" alt="Acar Bawang Tunggal Botol 100gram" class="img-fluid">
+            </div>
+            <h3 class="h5 playfair fw-bold" style="color:var(--hijau-tua);">Acar Bawang Tunggal 100g</h3>
+            <p class="text-secondary" style="font-size:0.95rem; flex:1; color:var(--hijau-muda)!important;">Rasa asam segar dengan khasiat herbal alami untuk pencernaan.</p>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="fs-5 harga-emas">Rp 85.000</span>
+              <button class="btn btn-primary-hijau rounded-circle d-flex align-items-center justify-content-center" style="width:40px;height:40px; padding:0;"><i class="bi bi-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-4 col-xl-3">
+        <div class="glass-card h-100">
+          <div class="card-body d-flex flex-column h-100">
+            <div class="product-img-wrapper mb-3">
+              <img src="src/products/black%20garlic%20250gram.png" alt="Black Garlic 250gram" class="img-fluid">
+            </div>
+            <h3 class="h5 playfair fw-bold" style="color:var(--hijau-tua);">Black Garlic Premium 250g</h3>
+            <p class="text-secondary" style="font-size:0.95rem; flex:1; color:var(--hijau-muda)!important;">Varian andalan dengan kualitas premium dan rasa manis alami.</p>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="fs-5 harga-emas">Rp 135.000</span>
+              <button class="btn btn-primary-hijau rounded-circle d-flex align-items-center justify-content-center" style="width:40px;height:40px; padding:0;"><i class="bi bi-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-4 col-xl-3">
+        <div class="glass-card h-100">
+          <div class="card-body d-flex flex-column h-100">
+            <div class="product-img-wrapper mb-3">
+              <img src="src/products/black%20garlic%20botol%20100gram.png" alt="Black Garlic Botol 100gram" class="img-fluid">
+            </div>
+            <h3 class="h5 playfair fw-bold" style="color:var(--hijau-tua);">Black Garlic Botol 100g</h3>
+            <p class="text-secondary" style="font-size:0.95rem; flex:1; color:var(--hijau-muda)!important;">Pilihan praktis dan mudah disimpan untuk kebutuhan sehari-hari.</p>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="fs-5 harga-emas">Rp 105.000</span>
+              <button class="btn btn-primary-hijau rounded-circle d-flex align-items-center justify-content-center" style="width:40px;height:40px; padding:0;"><i class="bi bi-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- newsletter CTA -->
+    <section class="mt-5 pt-4">
+      <div class="cta-bg p-4 p-md-5">
+        <div class="row align-items-center g-4">
+          <div class="col-md-7">
+            <h2 class="display-5 fw-bold playfair" style="color:var(--emas-muda);">Ingin Panduan Kesehatan Gratis?</h2>
+            <p class="text-white-50 fs-5">Berlangganan buletin kami untuk tips kesehatan herbal dan penawaran eksklusif.</p>
+          </div>
+          <div class="col-md-5">
+            <form class="d-flex flex-column flex-sm-row gap-3">
+              <input type="email" class="form-control" placeholder="Alamat email Anda">
+              <button type="submit" class="btn-cta-emas">DAFTAR SEKARANG</button>
+            </form>
+          </div>
+        </div>
+        <!-- decorative -->
+        <div class="position-absolute end-0 bottom-0 opacity-10 display-1" style="font-size:10rem; right:-10px; bottom:-30px; color:var(--emas);"><i class="bi bi-tree"></i></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="mt-5 pt-5">
+  <div class="container">
+    <div class="row g-5 py-4">
+      <div class="col-md-4">
+        <div class="footer-brand d-flex align-items-center gap-2">
+          <img src="src/logo.png" alt="Fresh Herbal Nutrition logo" style="height: 52px; width: auto;" />
+          <span>Fresh Herbal Nutrition</span>
+        </div>
+        <p class="mt-3" style="max-width:300px; opacity:0.7;">
+          Menghubungkan Anda dengan kekuatan penyembuhan alam melalui produk herbal premium.
+        </p>
+        <div class="d-flex gap-3 fs-5">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <h5>Navigasi</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Semua Produk</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-2">
+        <h5>Informasi</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Shipping &amp; Returns</a></li>
+          <li><a href="#">Wholesale</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Kontak Kami</h5>
+        <ul class="list-unstyled">
+          <li class="d-flex gap-2"><i class="bi bi-geo-alt" style="color:var(--emas);"></i> Jl. Herbal Alami No. 88, Jakarta Selatan</li>
+          <li class="d-flex gap-2"><i class="bi bi-envelope" style="color:var(--emas);"></i> hello@freshherbal.com</li>
+          <li class="d-flex gap-2"><i class="bi bi-telephone" style="color:var(--emas);"></i> +62 21 555 1234</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-top border-light border-opacity-10 pt-4 pb-3 text-center text-white-50">
+      © 2024 Fresh Herbal Nutrition. Ancient Wisdom, Modern Science.
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
