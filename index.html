@@ -206,10 +206,18 @@
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
-        .product-card img {
+        .product-image-wrapper {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background: #eef3ec;
+        }
+        .product-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: transform 0.6s ease;
         }
-        .product-card:hover img {
+        .product-card:hover .product-image-wrapper img {
             transform: scale(1.05);
         }
 
@@ -443,11 +451,10 @@
             <div class="row g-4 fade-in-section">
                 <div class="col-md-4">
                     <div class="glass-card rounded-4 overflow-hidden product-card h-100">
-                        <div class="position-relative">
+                        <div class="product-image-wrapper position-relative">
                             <img src="src/products/black%20garlic%20250gram.png"
                             alt="Black Garlic 250g"
-                            class="img-fluid w-100"
-                            style="height: 320px; object-fit: cover;" />
+                            class="img-fluid" />
                             <span class="position-absolute top-0 end-0 m-3 bg-secondary-custom text-white px-3 py-1 rounded-pill fs-6 fw-semibold">BEST SELLER</span>
                         </div>
                         <div class="p-4">
@@ -464,11 +471,10 @@
                 </div>
                 <div class="col-md-4">
                     <div class="glass-card rounded-4 overflow-hidden product-card h-100">
-                        <div class="position-relative">
+                        <div class="product-image-wrapper position-relative">
                             <img src="src/products/black%20garlic%20500gram.png"
                             alt="Black Garlic 500g"
-                            class="img-fluid w-100"
-                            style="height: 320px; object-fit: cover;" />
+                            class="img-fluid" />
                         </div>
                         <div class="p-4">
                             <h3 class="font-playfair fs-4 fw-bold text-primary-custom">Black Garlic 500g</h3>
@@ -484,11 +490,10 @@
                 </div>
                 <div class="col-md-4">
                     <div class="glass-card rounded-4 overflow-hidden product-card h-100">
-                        <div class="position-relative">
+                        <div class="product-image-wrapper position-relative">
                             <img src="src/products/black%20garlic%20standing%20100gram.png"
                             alt="Black Garlic Standing 100g"
-                            class="img-fluid w-100"
-                            style="height: 320px; object-fit: cover;" />
+                            class="img-fluid" />
                             <span class="position-absolute top-0 end-0 m-3 bg-primary-fixed text-dark px-3 py-1 rounded-pill fs-6 fw-semibold">EDISI SPESIAL</span>
                         </div>
                         <div class="p-4">
